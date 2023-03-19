@@ -1,6 +1,6 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
 import { onBeforeMount, ref } from 'vue';
+import PokeCard from './components/PokeCard.vue';
 
 let pokemonList = ref([]);
 
@@ -16,12 +16,12 @@ const fetchPokemon = async () => {
   pokemonList.value = await Promise.all(promises).then((results) => {
     return results.map((result) => ({
       name: result.name,
-      abilities: result.abilities.map(({ability}) => ability.name),
+      abilities: result.abilities.map(({ability}) => ability.name).join(', '),
       image: result.sprites['front_default'],
-      type: result.types.map((type) => type.type.name).join(', '),
+      type: result.types.map(({type}) => type.name).join(', '),
       id: result.id
     }));
-  })
+  });
 };
 
 onBeforeMount(() => {
@@ -31,11 +31,21 @@ onBeforeMount(() => {
 
 <template>
   <div>
-    <ul>
-      <li v-for="pokemon in pokemonList" :key="pokemon.id">{{ pokemon.name }}</li>
-    </ul>
+    <v-item-group selected-class="bg-primary">
+    <v-container>
+      <v-row v-for="row in pokemonList.length / 5" :key="row">
+        <v-item>
+            <v-card
+              class="d-flex align-center"
+              height="350"
+            >
+              <PokeCard v-for="pokemon in pokemonList.slice((row - 1) * 5, (row * 5))" :key="pokemon.id" :pokemon="pokemon"/>
+            </v-card>
+          </v-item>
+      </v-row>
+    </v-container>
+  </v-item-group>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
 <style scoped>

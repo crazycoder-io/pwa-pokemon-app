@@ -39,6 +39,7 @@ onBeforeMount(() => {
               class="d-flex align-center"
               height="350"
             >
+              <!-- Every line should have only 5 pokemon at once -->
               <PokeCard v-for="pokemon in pokemonList.slice((row - 1) * 5, (row * 5))" :key="pokemon.id" :pokemon="pokemon"/>
             </v-card>
           </v-item>
@@ -49,16 +50,4 @@ onBeforeMount(() => {
 </template>
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
 </style>

@@ -11,4 +11,11 @@ const vuetify = createVuetify({
   components,
 });
 
+// Add ability for pwa
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/sw.js');
+  });
+}
+
 createApp(App).use(vuetify).mount("#app");

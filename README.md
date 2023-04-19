@@ -1,5 +1,5 @@
 # Pokémon PWA with Vue.js and Vite
-This is a Pokémon Progressive Web Application (PWA) built with Vue.js and the Vite framework. The app allows users to browse through a database of Pokémon, view details about each one, and search for specific Pokémon by name or type.
+This is a Pokémon Progressive Web Application ([PWA](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps)) built with Vue.js and the Vite framework. The app allows users to browse through a database of Pokémon, view details about each one.
 
 ![Screen_Shot](https://github.com/crazycoder-io/pwa-pokemon-app/blob/master/public/Screen_Shot_Pokemon_PWA.png?raw=true, "Screen_Shot_Pokemon_PWA")
 
